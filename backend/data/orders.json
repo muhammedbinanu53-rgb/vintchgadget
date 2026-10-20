@@ -1,0 +1,80 @@
+[
+  {
+    "orderCode": "639F",
+    "orderId": "639F",
+    "customer": {
+      "name": "muhammed binanu",
+      "email": "muhammedbinanu@gmail.com",
+      "phone": "+2348167355014",
+      "address": "67F4+2WG\nodoguyan",
+      "notes": ""
+    },
+    "items": [
+      {
+        "id": 10,
+        "name": "Tablet",
+        "quantity": 1,
+        "unitPrice": 480000,
+        "lineTotal": 480000
+      }
+    ],
+    "total": 480000,
+    "status": "accepted",
+    "paymentMethod": "Payment on delivery",
+    "createdAt": "2026-10-20T13:00:05.824Z",
+    "acceptedAt": "2026-10-20T13:28:00.584Z",
+    "emailSent": false
+  },
+  {
+    "orderCode": "098O",
+    "orderId": "098O",
+    "customer": {
+      "name": "muhammed binanu",
+      "email": "muhammedbinanu@gmail.com",
+      "phone": "+2348167355014",
+      "address": "67F4+2WG\nodoguyan",
+      "notes": ""
+    },
+    "items": [
+      {
+        "id": 11,
+        "name": "Wireless Mouse",
+        "quantity": 1,
+        "unitPrice": 35000,
+        "lineTotal": 35000
+      }
+    ],
+    "total": 35000,
+    "status": "accepted",
+    "paymentMethod": "Payment on delivery",
+    "createdAt": "2026-10-20T13:04:19.211Z",
+    "acceptedAt": "2026-10-20T13:27:58.793Z",
+    "emailSent": false
+  },
+  {
+    "orderCode": "190G",
+    "orderId": "190G",
+    "customer": {
+      "name": "muhammed binanu",
+      "email": "muhammedbinanu@gmail.com",
+      "phone": "+2348167355014",
+      "address": "67F4+2WG\nodoguyan",
+      "notes": ""
+    },
+    "items": [
+      {
+        "id": 5,
+        "name": "Wireless Earbuds",
+        "quantity": 1,
+        "unitPrice": 75000,
+        "lineTotal": 75000
+      }
+    ],
+    "total": 75000,
+    "status": "accepted",
+    "paymentMethod": "Payment on delivery",
+    "createdAt": "2026-10-20T13:04:55.382Z",
+    "acceptedAt": "2026-10-20T13:27:56.563Z",
+    "emailSent": false
+  }
+]
