@@ -16,9 +16,14 @@
   --surface-light: #222320;
   --text: #f6f5f2;
   --muted: #a4a49d;
-  --orange: #ff8138;
-  --orange-light: #ffab70;
+  --orange: #174a85;
+  --orange-light: #3677BD;
   --border: rgba(255, 255, 255, 0.1);
+  --navy: #0B1F3A;
+--navy-deep: #071426;
+--blue-accent: #174A85;
+--blue-light: #3677BD;
+--blue-soft: #EAF1FA;
 }
 
 * {
