@@ -191,14 +191,14 @@
 
 @media (max-width: 480px) {
   .vg-support-float {
-    right: 14px;
+    left: 14px;
     bottom: 15px;
     min-height: 49px;
     padding: 0 16px;
   }
 
   .vg-support-panel {
-    right: 14px;
+    left: 14px;
     bottom: 75px;
     padding: 18px;
   }
