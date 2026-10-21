@@ -27,8 +27,8 @@ export default function OrderReceipt({ order, onClose }) {
     async function checkStatus() {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/orders/${encodeURIComponent(order.orderCode)}/status`
-        );
+  `https://vintchgadget-api.onrender.com/api/orders/${encodeURIComponent(order.orderCode)}/status`
+);
 
         if (!response.ok) return;
 
