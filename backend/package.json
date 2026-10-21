@@ -1,7 +1,7 @@
 {
-  "name": "mummy-bobo-store-backend",
+  "name": "vintch-gadget-backend",
   "version": "1.0.0",
-  "description": "Mummy Bobo Store backend",
+  "description": "VintchGadget backend",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

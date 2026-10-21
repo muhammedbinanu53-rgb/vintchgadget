@@ -507,12 +507,12 @@ if (!result.emailSent) {
             <div className="benefit-card">
               <span><FontAwesomeIcon icon={faShieldHalved} /></span>
               <h3>Clear order records</h3>
-              <p>Your submitted order details are sent to our store email for processing.</p>
+              <p>Your submitted order details are sent to our store admin for processing.</p>
             </div>
             <div className="benefit-card">
               <span><FontAwesomeIcon icon={faHeadphones} /></span>
               <h3>Here for your questions</h3>
-              <p>Contact our team at vintchgadget@gmail.com for product enquiries.</p>
+              <p>Contact our team at vintchgadget@gmail.com 2348167355014 for product enquiries.</p>
             </div>
           </div>
         </section>
@@ -685,12 +685,12 @@ if (!result.emailSent) {
 
     <a href="tel:08167355014">
       <span>Emergency line 1</span>
-      <strong>08167355014</strong>
+      <strong>2348167355014</strong>
     </a>
 
     <a href="tel:08155608499">
       <span>Emergency line 2</span>
-      <strong>08155608499</strong>
+      <strong>2348155608499</strong>
     </a>
 
     <a href="mailto:vintchgadget@gmail.com">

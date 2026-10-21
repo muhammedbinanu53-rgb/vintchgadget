@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 
 const express = require("express");
@@ -15,12 +14,11 @@ const ADMIN_URL = process.env.ADMIN_URL || "http://localhost:5000/admin";
 const DATA_DIR = path.join(__dirname, "data");
 const ORDERS_FILE = path.join(DATA_DIR, "orders.json");
 
-app.use(cors({
-  origin: [
-    "http://localhost:5174",
-    "http://127.0.0.1:5174",
-  ],
-}));
+app.use(
+  cors({
+    origin: ["http://localhost:5174", "http://127.0.0.1:5174"],
+  }),
+);
 
 app.use(express.json({ limit: "100kb" }));
 
@@ -37,6 +35,9 @@ const products = [
   { id: 10, name: "Tablet", price: 480000, stock: 9 },
   { id: 11, name: "Wireless Mouse", price: 35000, stock: 30 },
   { id: 12, name: "Mechanical Keyboard", price: 85000, stock: 14 },
+  { id: 13, name: "iphone 18", price: 3000000, stock: 10 },
+  { id: 14, name: "Samsung Galaxy S25 Ultra", category: "Phones", price: 2500000, stock: 12, },
+  { id: 15, name: "Google Pixel 9 Pro", price: 1600000, stock: 12 },
 ];
 
 fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -57,7 +58,7 @@ function readOrders() {
 
   if (!savedOrders) {
     throw new Error(
-      "The saved orders file has an unexpected format. No data was changed."
+      "The saved orders file has an unexpected format. No data was changed.",
     );
   }
 
@@ -72,8 +73,8 @@ function readOrders() {
           unitPrice: Number(item.unitPrice ?? item.price ?? 0),
           lineTotal: Number(
             item.lineTotal ??
-            Number(item.unitPrice ?? item.price ?? 0) *
-              Number(item.quantity || 0)
+              Number(item.unitPrice ?? item.price ?? 0) *
+                Number(item.quantity || 0),
           ),
         }))
       : [],
@@ -97,9 +98,7 @@ const money = (amount) =>
   }).format(amount);
 
 function cleanText(value, maxLength = 500) {
-  return typeof value === "string"
-    ? value.trim().slice(0, maxLength)
-    : "";
+  return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
 }
 
 function validEmail(email) {
@@ -107,28 +106,30 @@ function validEmail(email) {
 }
 
 function escapeHtml(value) {
-  return String(value ?? "").replace(/[&<>"']/g, (character) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;",
-  })[character]);
+  return String(value ?? "").replace(
+    /[&<>"']/g,
+    (character) =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      })[character],
+  );
 }
 
 function makeOrderCode(existingOrders) {
   let code;
 
   do {
-    const digits = crypto.randomInt(0, 1000)
-      .toString()
-      .padStart(3, "0");
+    const digits = crypto.randomInt(0, 1000).toString().padStart(3, "0");
 
     const letter = String.fromCharCode(65 + crypto.randomInt(0, 26));
     code = digits + letter;
   } while (
     existingOrders.some(
-      (order) => (order.orderCode || order.orderId || order.code) === code
+      (order) => (order.orderCode || order.orderId || order.code) === code,
     )
   );
 
@@ -136,10 +137,12 @@ function makeOrderCode(existingOrders) {
 }
 
 function createAdminToken() {
-  const payload = Buffer.from(JSON.stringify({
-    role: "admin",
-    exp: Date.now() + 8 * 60 * 60 * 1000,
-  })).toString("base64url");
+  const payload = Buffer.from(
+    JSON.stringify({
+      role: "admin",
+      exp: Date.now() + 8 * 60 * 60 * 1000,
+    }),
+  ).toString("base64url");
 
   const signature = crypto
     .createHmac("sha256", process.env.ADMIN_TOKEN_SECRET)
@@ -151,8 +154,7 @@ function createAdminToken() {
 
 function isAdmin(req) {
   const secret = process.env.ADMIN_TOKEN_SECRET;
-  const token = (req.headers.authorization || "")
-    .replace(/^Bearer\s+/i, "");
+  const token = (req.headers.authorization || "").replace(/^Bearer\s+/i, "");
 
   if (!secret || !token) return false;
 
@@ -180,9 +182,7 @@ function isAdmin(req) {
   }
 
   try {
-    const payload = JSON.parse(
-      Buffer.from(parts[0], "base64url").toString()
-    );
+    const payload = JSON.parse(Buffer.from(parts[0], "base64url").toString());
 
     return payload.role === "admin" && payload.exp > Date.now();
   } catch {
@@ -201,7 +201,9 @@ function adminOnly(req, res, next) {
 }
 
 function emailHtml(order) {
-  const rows = order.items.map((item) => `
+  const rows = order.items
+    .map(
+      (item) => `
     <tr>
       <td style="padding:12px 8px;border-bottom:1px solid #e9edf2">
         ${escapeHtml(item.name)}
@@ -213,7 +215,9 @@ function emailHtml(order) {
         ${money(item.lineTotal)}
       </td>
     </tr>
-  `).join("");
+  `,
+    )
+    .join("");
 
   return `
     <div style="margin:0;background:#f3f5f8;padding:28px 10px;font-family:Arial,sans-serif;color:#202631">
@@ -965,7 +969,7 @@ app.post("/api/admin/login", (req, res) => {
 app.get("/api/admin/orders", adminOnly, (_req, res) => {
   try {
     const orders = readOrders().sort(
-      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
     );
 
     res.json({ orders });
@@ -983,7 +987,7 @@ app.post("/api/admin/orders/:code/accept", adminOnly, (req, res) => {
   try {
     const orders = readOrders();
     const order = orders.find(
-      (entry) => (entry.orderCode || entry.orderId) === req.params.code
+      (entry) => (entry.orderCode || entry.orderId) === req.params.code,
     );
 
     if (!order) {
@@ -1049,7 +1053,7 @@ app.delete("/api/admin/orders/:code", adminOnly, (req, res) => {
 app.get("/api/orders/:code/status", (req, res) => {
   try {
     const order = readOrders().find(
-      (entry) => (entry.orderCode || entry.orderId) === req.params.code
+      (entry) => (entry.orderCode || entry.orderId) === req.params.code,
     );
 
     if (!order) {
@@ -1153,10 +1157,7 @@ app.post("/api/orders", async (req, res) => {
         });
       }
 
-      requested.set(
-        item.id,
-        (requested.get(item.id) || 0) + item.quantity
-      );
+      requested.set(item.id, (requested.get(item.id) || 0) + item.quantity);
     }
 
     const orderItems = [];
@@ -1185,10 +1186,7 @@ app.post("/api/orders", async (req, res) => {
       });
     }
 
-    const total = orderItems.reduce(
-      (sum, item) => sum + item.lineTotal,
-      0
-    );
+    const total = orderItems.reduce((sum, item) => sum + item.lineTotal, 0);
 
     if (!Number.isSafeInteger(total) || total <= 0) {
       return res.status(400).json({
@@ -1239,7 +1237,7 @@ app.post("/api/orders", async (req, res) => {
             `Notes: ${customer.notes || "None"}`,
             ...orderItems.map(
               (item) =>
-                `${item.name} x ${item.quantity}: ${money(item.lineTotal)}`
+                `${item.name} x ${item.quantity}: ${money(item.lineTotal)}`,
             ),
             `Total: ${money(total)}`,
             "Payment: Payment on delivery",
@@ -1256,9 +1254,7 @@ app.post("/api/orders", async (req, res) => {
         console.error("Order email could not be sent:", error.message);
       }
     } else {
-      console.error(
-        "Order saved, but Resend sender configuration is missing."
-      );
+      console.error("Order saved, but Resend sender configuration is missing.");
     }
 
     order.emailSent = emailSent;
@@ -1266,7 +1262,7 @@ app.post("/api/orders", async (req, res) => {
     try {
       const latestOrders = readOrders();
       const savedOrder = latestOrders.find(
-        (entry) => entry.orderCode === orderCode
+        (entry) => entry.orderCode === orderCode,
       );
 
       if (savedOrder) {
@@ -1276,13 +1272,11 @@ app.post("/api/orders", async (req, res) => {
     } catch (saveError) {
       console.error(
         "Could not update email delivery status:",
-        saveError.message
+        saveError.message,
       );
     }
 
-    console.log(
-      `Order saved: ${orderCode}; admin email sent: ${emailSent}`
-    );
+    console.log(`Order saved: ${orderCode}; admin email sent: ${emailSent}`);
 
     return res.status(201).json({
       message: "Your order has been submitted successfully.",
@@ -1299,7 +1293,8 @@ app.post("/api/orders", async (req, res) => {
     console.error("Order submission failed:", error.message);
 
     return res.status(500).json({
-      message: "We could not submit your order right now. Please try again later.",
+      message:
+        "We could not submit your order right now. Please try again later.",
     });
   }
 });

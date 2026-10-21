@@ -17,8 +17,8 @@
   padding: 0 20px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
-  background: #242522;
-  color: #f1c45b;
+  background: blue;
+  color: red;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.23);
   font-size: 13px;
   font-weight: 750;
@@ -28,7 +28,8 @@
 
 .vg-support-float:hover {
   transform: translateY(-3px);
-  background: #34352f;
+  background:black;
+  color:blue
 }
 
 .vg-support-float svg {
@@ -64,7 +65,7 @@
   flex-shrink: 0;
   border-radius: 14px;
   background: #242522;
-  color: #f1c45b;
+  color: red;
   font-size: 19px;
 }
 
@@ -124,7 +125,7 @@
 
 .vg-support-contact:hover,
 .vg-support-email:hover {
-  border-color: #d4a63d;
+  border-color: red;
   background: #fffaf0;
 }
 
@@ -136,7 +137,7 @@
   flex-shrink: 0;
   border-radius: 11px;
   background: #f8efd8;
-  color: #936d16;
+  color: red;
 }
 
 .vg-support-contact-text,
@@ -166,7 +167,7 @@
 }
 
 .vg-support-email > svg {
-  color: #a77b1d;
+  color: red;
   font-size: 19px;
 }
 

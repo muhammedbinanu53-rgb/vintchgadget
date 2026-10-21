@@ -214,7 +214,7 @@
   height: 7px;
   border-radius: 50%;
   background: var(--orange);
-  box-shadow: 0 0 12px rgba(255, 129, 56, 0.7);
+  box-shadow: 0 0 12px rgba(11, 1, 44, 0.7);
 }
 
 .hero h1 {
@@ -266,7 +266,7 @@
 }
 
 .button-primary:hover:not(:disabled) {
-  background: #ff9b60;
+  background: #2b88f1;
 }
 
 .button-outline {
@@ -319,13 +319,13 @@
   width: 78%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 129, 56, 0.2), rgba(255, 129, 56, 0.03) 52%, transparent 72%);
+  background: radial-gradient(circle, rgba(21, 9, 92, 0.2), rgba(255, 129, 56, 0.03) 52%, transparent 72%);
   z-index: -2;
 }
 
 .hero-orbit {
   position: absolute;
-  border: 1px solid rgba(255, 129, 56, 0.17);
+  border: 1px solid rgba(26, 5, 82, 0.17);
   border-radius: 50%;
   z-index: -1;
 }
@@ -426,7 +426,7 @@
   display: grid;
   place-items: center;
   border-radius: 8px;
-  background: rgba(255, 129, 56, 0.14);
+  background: rgba(8, 4, 68, 0.14);
   color: var(--orange);
 }
 
@@ -606,7 +606,7 @@
 .category-card:hover,
 .category-active {
   border-color: var(--orange);
-  background: linear-gradient(140deg, rgba(255, 129, 56, 0.12), #191a17);
+  background: linear-gradient(140deg, rgba(9, 4, 77, 0.12), #191a17);
   transform: translateY(-4px);
 }
 
@@ -714,7 +714,7 @@
 
 .product-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(255, 129, 56, 0.48);
+  border-color: rgba(58, 29, 224, 0.48);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16);
 }
 
@@ -1315,10 +1315,10 @@
 .form-error {
   margin: 0;
   padding: 11px;
-  border: 1px solid rgba(255, 100, 100, 0.3);
+  border: 1px solid rgba(26, 18, 128, 0.3);
   border-radius: 5px;
   background: rgba(255, 70, 70, 0.08);
-  color: #ffaaa4;
+  color: #174A85;
   font-size: 11px;
   line-height: 1.6;
 }
@@ -1972,7 +1972,7 @@
 }
 
 .vg-footer-brand h2 span {
-  color: #c99a2e;
+  color: #174A85;
 }
 
 .vg-footer-brand p,
@@ -1984,7 +1984,7 @@
 
 .vg-footer-contact h3 {
   margin: 0 0 10px;
-  color: #e6bd58;
+  color: #174A85;
   font-size: 15px;
 }
 
@@ -2010,7 +2010,7 @@
 }
 
 .vg-footer-contact a:hover strong {
-  color: #e6bd58;
+  color: #174A85;
 }
 
 .vg-footer-bottom {
