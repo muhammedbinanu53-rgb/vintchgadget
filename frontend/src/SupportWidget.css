@@ -6,7 +6,7 @@
 
 .vg-support-float {
   position: fixed;
-  right: 22px;
+  left: 22px;
   bottom: 24px;
   z-index: 1000;
   display: flex;
@@ -38,7 +38,7 @@
 
 .vg-support-panel {
   position: fixed;
-  right: 22px;
+  left: 22px;
   bottom: 91px;
   z-index: 1001;
   width: min(390px, calc(100vw - 28px));
